@@ -1,0 +1,35 @@
+SITE STUDIO NANNDOO: O QUE CONFERIR ANTES DE PUBLICAR
+=====================================================
+
+Montado a partir do Instagram @studio_nanndoo:
+- "A nossa alegria é ver você feliz!"
+- Barbeiro, cabeleireira, manicure e pedicure
+- Agendamento: Nando (11) 95320-3688 e Sandra (11) 99600-3476
+- Link geral de WhatsApp: wa.me/message/V36OQV22UGDEK1
+
+DIREÇÃO VISUAL
+- Ideia central: o salão são duas pessoas. O topo é dividido entre o lado do Nando
+  (marinho) e o lado da Sandra (magenta), com os nomes em letra de letreiro e o
+  WhatsApp de cada um. O lado em que o mouse ou o teclado está se abre um pouco.
+- Serviços em formato de tabela de parede: ao lado de cada serviço, quem faz.
+- Cores (tema escuro): fundo #0b1433, marinho #172a63, magenta #d63d86,
+  texto #f1eef6, texto secundário #9ba4c4, rosa claro #ffb3d4 para texto pequeno.
+- Fontes: Big Shoulders Display (nomes e títulos) + Instrument Sans (texto).
+- Movimento: só os nomes subindo ao abrir a página. Nada anima ao rolar.
+
+1. CONTATOS (já configurados)
+   Para trocar, mude WA_GERAL, WA (nando/sandra) e INSTAGRAM no começo do js/script.js.
+
+2. QUEM FAZ O QUÊ (confirmar)
+   Barbearia com o Nando; cabelo e unhas com a Sandra. Se a manicure for outra
+   pessoa, ajuste data-wa e o nome nas linhas de Unhas da tabela.
+
+3. SERVIÇOS E PREÇOS
+   Confirme a lista. Se quiser preços, troque o nome à direita de cada serviço pelo valor.
+
+4. FOTOS
+   img/nando.jpg e img/sandra.jpg entram no fundo de cada lado do topo (veja os
+   comentários no index.html). As 4 fotos de "Trabalhos recentes" substituem os blocos coloridos.
+
+5. ENDEREÇO, HORÁRIO E MAPA
+   Seção "Antes de vir": troque os textos entre colchetes e ENDERECO+DO+STUDIO no mapa.

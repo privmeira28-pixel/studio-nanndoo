@@ -1,0 +1,140 @@
+/* Studio Nanndoo
+   Ideia central: o salão são duas pessoas. O topo é dividido entre o lado do Nando (marinho)
+   e o lado da Sandra (magenta), com os nomes em letra de letreiro. O resto da página fica quieto.
+   Cores da marca em versão escura; fontes Big Shoulders Display (letreiro) + Instrument Sans (texto). */
+:root{
+  --noite:#0b1433;     /* fundo */
+  --marinho:#172a63;   /* lado do Nando */
+  --magenta:#d63d86;   /* lado da Sandra, cor da marca */
+  --papel:#f1eef6;     /* texto principal */
+  --nevoa:#9ba4c4;     /* texto secundário */
+  --rosa:#ffb3d4;      /* realce em texto pequeno sobre o fundo escuro */
+  --wa:#1fa855;
+  --linha:rgba(241,238,246,.14);
+  --display:"Big Shoulders Display","Arial Narrow",sans-serif;
+  --texto:"Instrument Sans","Segoe UI",Roboto,Arial,sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--noite);color:var(--papel);font:400 17px/1.6 var(--texto);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;cursor:pointer}
+p,h1,h2,h3,dl,dd,ul,figure{margin:0}
+ul{padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--rosa);outline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:16px;top:-60px;z-index:100;padding:10px 16px;background:var(--papel);color:var(--noite);font-weight:600;text-decoration:none}
+.skip:focus{top:12px}
+h2{font:800 clamp(40px,6vw,72px)/.95 var(--display);letter-spacing:.005em}
+h3{font:600 26px/1.1 var(--display);letter-spacing:.02em}
+
+/* barra do topo: sólida, sem desfoque */
+.bar{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px;padding:0 clamp(16px,4vw,48px);background:var(--noite);border-bottom:1px solid var(--linha)}
+.mark{display:flex;align-items:center;gap:10px;min-height:44px;font:800 24px/1 var(--display);letter-spacing:.02em;text-decoration:none;white-space:nowrap}
+.mark-n{display:grid;place-items:center;width:34px;height:34px;font-size:24px;background:linear-gradient(90deg,var(--marinho) 50%,var(--magenta) 50%)}
+.bar-links{display:flex;align-items:center;gap:8px}
+.bar-links a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;font-weight:600;font-size:15px;text-decoration:none}
+.bar-links svg{width:20px;height:20px;flex:none}
+.link-ig{color:var(--nevoa)}
+.link-ig:hover{color:var(--papel)}
+.link-wa{background:var(--wa);color:#fff;border-radius:999px}
+.link-wa:hover{background:#18914a}
+
+/* o topo dividido entre os dois profissionais */
+.split{display:flex;min-height:calc(100svh - 64px)}
+.side{position:relative;flex:1 1 0;display:flex;flex-direction:column;justify-content:flex-end;gap:14px;padding:clamp(28px,5vw,64px);overflow:hidden;isolation:isolate;transition:flex-grow .6s var(--ease)}
+.side-nando{background:var(--marinho)}
+.side-sandra{background:var(--magenta)}
+/* o lado em que a pessoa está (mouse ou teclado) se abre um pouco */
+@media (hover:hover) and (min-width:861px){
+  .split:hover .side:hover,.split .side:focus-within{flex-grow:1.4}
+}
+.side-photo{position:absolute;inset:0;z-index:-1;width:100%;height:100%;object-fit:cover;opacity:.35;mix-blend-mode:luminosity}
+.side-kicker{font-size:18px;font-weight:500}
+.side-nando .side-kicker{color:var(--nevoa)}
+.side-sandra .side-kicker{color:#fff}
+/* flex-shrink:0: sem isso, no layout empilhado o flex encolhe o título e a máscara da animação corta o nome */
+.name{flex-shrink:0;font:800 clamp(96px,17vw,260px)/.86 var(--display);letter-spacing:-.01em;margin:0 0 6px -.04em;overflow:hidden;padding-bottom:.04em}
+.name span{display:block;animation:rise 1s var(--ease) both}
+.side-sandra .name span{animation-delay:.12s}
+@keyframes rise{from{transform:translateY(105%)}}
+.side-list{max-width:30ch;font-size:18px}
+.side-nando .side-list{color:var(--nevoa)}
+.side-cta{align-self:flex-start;display:inline-flex;align-items:center;gap:12px;min-height:56px;margin-top:10px;padding:0 24px 0 18px;background:var(--papel);color:var(--noite);font-weight:600;font-size:17px;text-decoration:none;border-radius:999px;transition:transform .25s var(--ease)}
+.side-cta svg{width:24px;height:24px;color:var(--wa);flex:none}
+.side-cta small{font-size:14px;font-weight:500;color:#4a5274;padding-left:12px;border-left:1px solid #c9c5d6}
+.side-cta:hover{transform:translateY(-2px)}
+
+/* frase da casa */
+.motto{padding:clamp(56px,9vw,120px) clamp(16px,4vw,48px)}
+.motto p{max-width:28ch;font:600 clamp(30px,4.2vw,52px)/1.08 var(--display);letter-spacing:.005em}
+
+/* tabela de serviços, como a que fica na parede do salão */
+.board,.wall,.visit{padding:0 clamp(16px,4vw,48px) clamp(64px,9vw,120px)}
+.board-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;padding-bottom:28px;border-bottom:2px solid var(--papel)}
+.board-head p{color:var(--nevoa)}
+.board-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:0 clamp(24px,4vw,56px)}
+.board-group{padding-top:28px}
+.board-group h3{margin-bottom:10px}
+.board-group:nth-child(1) h3{color:var(--nevoa)}
+.board-group:nth-child(n+2) h3{color:var(--rosa)}
+.board-group a{display:flex;align-items:baseline;gap:10px;min-height:48px;padding:12px 0;text-decoration:none;font-size:17px}
+.board-group a i{flex:1;border-bottom:2px dotted var(--linha);transform:translateY(-4px)}
+.board-group a b{font-weight:600;font-size:15px;color:var(--nevoa);transition:color .2s}
+.board-group a:hover span{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
+.board-group a:hover b{color:var(--papel)}
+
+/* trabalhos recentes */
+.wall-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;margin-bottom:28px}
+.wall-head a{min-height:44px;display:inline-flex;align-items:center;color:var(--rosa);font-weight:600;text-underline-offset:5px}
+.wall-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.wall-strip figure{display:flex;flex-direction:column;gap:10px}
+.wall-strip img,.ph{width:100%;aspect-ratio:4/5;object-fit:cover}
+.ph{display:grid;place-items:end start;padding:18px;font:800 clamp(30px,3vw,44px)/.9 var(--display)}
+.ph-navy{background:var(--marinho);color:var(--nevoa)}
+.ph-pink{background:var(--magenta);color:#fff}
+.wall-strip figcaption{font-size:15px;color:var(--nevoa)}
+
+/* antes de vir */
+.visit{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(32px,5vw,72px);align-items:start}
+.visit h2{margin-bottom:28px}
+.visit dl{display:grid;grid-template-columns:auto 1fr;gap:16px 28px;max-width:60ch}
+.visit dt{font-weight:600}
+.visit dd{color:var(--nevoa)}
+.map{aspect-ratio:4/3}
+.map iframe{width:100%;height:100%;border:0;display:block;filter:grayscale(.6) invert(.9) hue-rotate(180deg) contrast(.9)}
+
+/* rodapé */
+.foot{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 28px;padding:28px clamp(16px,4vw,48px) 40px;border-top:1px solid var(--linha);color:var(--nevoa);font-size:15px}
+.foot-name{font:800 24px/1 var(--display);color:var(--papel)}
+.foot a{display:inline-flex;align-items:center;min-height:44px;margin-right:18px;color:var(--papel);text-underline-offset:5px}
+
+/* responsivo */
+@media (max-width:1000px){
+  .board-cols{grid-template-columns:1fr 1fr}
+  .wall-strip{grid-template-columns:repeat(4,72%);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}
+  .wall-strip figure{scroll-snap-align:start}
+}
+@media (max-width:860px){
+  .split{flex-direction:column;min-height:0}
+  .side{flex:none;min-height:56svh}
+  .visit{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .link-ig span{display:none}
+  .link-ig{padding:0 10px}
+  .mark{font-size:21px}
+  .board-cols{grid-template-columns:1fr}
+  .side{min-height:auto;padding-top:56px}
+  .side-cta{width:100%;justify-content:center}
+  .side-cta small{display:none}
+  .visit dl{grid-template-columns:1fr;gap:4px}
+  .visit dd{margin-bottom:12px}
+  .wall-strip{grid-template-columns:repeat(4,80%)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
